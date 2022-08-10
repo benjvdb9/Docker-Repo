@@ -1,0 +1,40 @@
+services:
+  frontend:
+    build:
+      context: ./files
+      dockerfile: front.Dockerfile 
+    ports:
+      - "80:80"
+    volumes:
+      - ./code:/code
+    networks:
+      - internal-docker
+
+  backend:
+    build:
+      context: ./files
+      dockerfile: back.Dockerfile
+    ports:
+      - "3306:3306"
+    networks:
+      - internal-docker
+
+  php:
+    build:
+      context: ./files
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./code:/code
+    networks:
+      - internal-docker
+
+  db-viewer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - internal-docker
+
+networks:
+  internal-docker: {}
