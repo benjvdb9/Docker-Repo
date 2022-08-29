@@ -1,3 +1,3 @@
-echo "Starting CRON..."
+#!/bin/bash
 service cron start
-/entrypoint.sh $1
+/usr/local/bin/docker-entrypoint.sh $*
