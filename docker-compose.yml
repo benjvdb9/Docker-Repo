@@ -17,7 +17,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "/mnt/Backups:/Windows/backups"
+      - "networkvolume:/Windows/backups"
     networks:
       - internal-docker
 
@@ -37,6 +37,13 @@ services:
       - "8080:8080"
     networks:
       - internal-docker
+
+volumes:
+  networkvolume:
+    driver_opts:
+      type: cifs
+      o: "user=B.Vandenbus@intec-cloud.com,password=intec-123"
+      device: "//172.16.42.4/Docker-Backups$$"
 
 networks:
   internal-docker: {}

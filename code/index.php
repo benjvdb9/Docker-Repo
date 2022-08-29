@@ -13,7 +13,7 @@
                 $dbname = "Intec";
 
                 // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $dbnameo);
 
                 // Check connection
                 if ($conn->connect_error) {
