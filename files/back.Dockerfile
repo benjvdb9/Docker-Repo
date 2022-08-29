@@ -8,10 +8,10 @@ RUN mkdir -p /Windows/backups
 RUN chmod +x /home/script.sh
 RUN chmod +x /usr/local/bin/startup.sh
 
-RUN apt update && apt -y install vim cron
+RUN apt update && apt -y install cron
 RUN update-rc.d cron defaults
 RUN update-rc.d cron enable
-RUN (crontab -l -u root; echo "* * * * * /home/script.sh") | crontab -u root -
+RUN (crontab -l -u root; echo "0 23 * * * /home/script.sh") | crontab -u root -
 
 ENTRYPOINT ["startup.sh"]
 CMD ["mysqld"]
