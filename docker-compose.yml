@@ -16,6 +16,8 @@ services:
       dockerfile: back.Dockerfile
     ports:
       - "3306:3306"
+    volumes:
+      - "/mnt/Backups:/Windows/backups"
     networks:
       - internal-docker
 
